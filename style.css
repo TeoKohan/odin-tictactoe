@@ -42,6 +42,16 @@ body {
     flex: 1;
     background-color: wheat;
     border: 2px solid linen;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    display: none;
 }
 
 footer {
