@@ -2,7 +2,8 @@ const Game = (() => {
 
     const Tokens = {
         Circle: 'Circle',
-        Cross: 'Cross'
+        Cross: 'Cross',
+        None: 'None'
     };
 
     let Player = (token, link) => { 
@@ -28,9 +29,23 @@ const Game = (() => {
         const get_board = function () {
             return Board;
         }
+        const end = function () {
+            const flat_board = [].concat(...Board);
+
+            for(let i = 0; i < 3; ++i)
+                if ([flat_board[i*3], flat_board[i*3+1], flat_board[i*3+2]].every( v => v == flat_board[i*3]) && flat_board[i*3] != null ||
+                    [flat_board[i], flat_board[i+3], flat_board[i+6]].every( v => v == flat_board[i]) && flat_board[i] != null)
+                    return flat_board[i*4];
+
+            if ([flat_board[0], flat_board[4], flat_board[8]].every( v => v == flat_board[0]) && flat_board[0] != null ||
+                [flat_board[2], flat_board[4], flat_board[6]].every( v => v == flat_board[2]) && flat_board[2] != null)
+                return flat_board[4];
+
+            return flat_board.every( v => v !== null) ? Tokens.None : null;
+        }
     
         reset();
-        return {reset, set_cell, get_cell, get_board};
+        return {reset, set_cell, get_cell, get_board, end};
     }
     )();
 
@@ -45,6 +60,10 @@ const Game = (() => {
     let text = document.querySelector('header .info');
 
     function update () {
+        if (G.end() != null) {
+            console.log('win' + G.end());
+            active_player = null;
+        }
         text.textContent = 'Active Player: ' + (active_player?.get_token() ?? '');
         header.classList = [active_player?.get_token() ?? 'Neutral'];
     }
