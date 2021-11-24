@@ -15,6 +15,27 @@ body {
     align-items: stretch;
 }
 
+header {
+    min-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+.Neutral {
+    background-color: black;
+}
+
+.Circle {
+    background-color: navy;
+}
+
+.Cross {
+    background-color: brown;
+}
+
 .content {
     align-self: center;
 }
@@ -55,7 +76,7 @@ img {
 }
 
 footer {
-    height: 100px;
+    min-height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +85,7 @@ footer {
     background-color: black;
 }
 
-footer>* {
+.info {
     font-size: 16px;
     font-weight: bold;
 }
