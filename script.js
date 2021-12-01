@@ -117,7 +117,8 @@ const Game = (() => {
         const operation = player.get_token() == current_player.get_token() ? modes.MAX : modes.MIN;
         state = moves.reduce((previous, move) => 
                 operation(move.value, previous.value) ?
-                    {cell: [...move.cell], value: move.value} : previous);
+                    {cell: [...move.cell], value: move.value - 1} : 
+                    {cell: previous.cell , value: previous.value - 1});
         return state;
     };
 
@@ -153,7 +154,6 @@ const Game = (() => {
     function reset() {
         if (players) {
             Gameboard.reset();
-            body.classList = [];
             current_player = Math.random() > 0.5 ? players[0] : players[1];
             update();
             game_state = GameState.Progress;
@@ -246,12 +246,15 @@ function update_display () {
             body.classList = [];
             break;
         case GameState.Progress:
-            text.textContent = `It's ${Game.get_current_player().get_name()}s turn.`;
+            text.textContent = 
+                `It's ${Game.get_current_player().get_name() == '' ?
+                    Game.get_current_player().get_token() : Game.get_current_player().get_name()}'s turn.`;
             body.classList = [];
             break;
         case GameState.Finish:
             text.textContent = Game.get_current_player() === null ? 
-                    `It's a tie!` : `${Game.get_current_player().get_name()} wins!`;
+                    `It's a tie!` : `${Game.get_current_player().get_name() == '' ?
+                        Game.get_current_player().get_token() : Game.get_current_player().get_name()} wins!`;
             body.classList = [style];
             break;
     }
