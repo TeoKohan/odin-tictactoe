@@ -155,8 +155,8 @@ const Game = (() => {
         if (players) {
             Gameboard.reset();
             current_player = Math.random() > 0.5 ? players[0] : players[1];
-            update();
             game_state = GameState.Progress;
+            update(); 
         }
     };
 
