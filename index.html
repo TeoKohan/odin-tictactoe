@@ -10,23 +10,62 @@
         <header class="neutral">
             <div class="info"></div>
         </header>
+        <div class="modal">
+            <form method="post" id="game">
+                <div class="header">Start new Game</div>
+                <div class="fields">
+                    <img src="./images/circle.png" class="thumb">
+                    <div class="circle">
+                        <div class="field">
+                            <label for="circlename" required>Name:</label>
+                            <input type="text" name="circlename" placeholder="Circle players name">
+                            <small></small>
+                        </div>
+                        <div class="field">
+                            <label for="circleCPU"   required>Is CPU:</label>
+                            <input type="checkbox" name="circleCPU" value="off">
+                            <small></small>
+                        </div>
+                    </div>
+                    <img src="./images/cross.png" class="thumb">
+                    <div class="cross">
+                        <div class="field">
+                            <label for="crossname" required>Name:</label>
+                            <input type="text" name="crossname" placeholder="Cross players name">
+                            <small></small>
+                        </div>
+                        <div class="field">
+                            <label for="crossCPU"   required>Is CPU:</label>
+                            <input type="checkbox" name="crossCPU" value="off">
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Start Game"></input>
+            </form>
+        </div>
         <div class="content">
+            <div class="pane"></div>
             <div class="board">
                 <div class="row">
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
                 </div>
                 <div class="row">
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
                 </div>
                 <div class="row">
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
-                    <div class="cell"><img></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
+                    <div class="cell"><img class="cellimg"></div>
                 </div>
+            </div>
+            <div class="options pane">
+                <button id="newgame">New Game</button>
+                <button id="restart">Restart</button>
             </div>
         </div>
         <footer>
