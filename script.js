@@ -130,6 +130,7 @@ const Game = (() => {
         else
             play = minimax(current_player);
         playcell(...play.cell);
+        console.table(Gameboard.get_board());
     }
 
     function playcell (n, m) {
@@ -201,9 +202,12 @@ form.addEventListener('submit', (e) => {
          Player(Tokens.Cross,  form.elements['crossname'].value,  form.elements['crossCPU'].checked)];
     players[0].next_player = players[1];
     players[1].next_player = players[0];
-    Game.start_game(players);
-    update_board();
-    modal.style.display = "none";
+
+    if (!form.elements['circleCPU'].checked || !form.elements['crossCPU'].checked) {
+        Game.start_game(players);
+        update_board();
+        modal.style.display = "none";
+    }
     e.preventDefault(); //Don't submit the form
 });
 
@@ -252,9 +256,10 @@ function update_display () {
             body.classList = [];
             break;
         case GameState.Finish:
-            text.textContent = Game.get_current_player() === null ? 
+            text.textContent = (Game.get_current_player() === null ? 
                     `It's a tie!` : `${Game.get_current_player().get_name() == '' ?
-                        Game.get_current_player().get_token() : Game.get_current_player().get_name()} wins!`;
+                        Game.get_current_player().get_token() : Game.get_current_player().get_name()} wins!`) +
+                    ` Restart or start a new game.`;
             body.classList = [style];
             break;
     }

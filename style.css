@@ -41,6 +41,9 @@ form {
     background-color: #fefefe;
     border: 1px solid #888;
 
+    border-radius: 8px;
+    overflow: auto;
+
     overflow: hidden;
 }
 
@@ -54,6 +57,14 @@ header {
 
     color: white;
     border-bottom: 20px solid white;
+    background-color: black;
+}
+
+.header {
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: whitesmoke;
     background-color: black;
 }
 
@@ -167,6 +178,7 @@ button:hover {
 
     background-color: beige;
     border: 2px solid burlywood;
+    border-radius: 32px;
 }
 
 .row {
@@ -176,8 +188,11 @@ button:hover {
 
 .cell {
     flex: 1;
-    background-color: wheat;
-    border: 2px solid linen;
+    background-color: rgb(255, 174, 0);
+    border: 8px solid rgb(255, 128, 0);
+    border-radius: 16px;
+
+    margin: 8px;
 
     display: flex;
     justify-content: center;
